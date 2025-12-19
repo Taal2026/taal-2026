@@ -250,50 +250,35 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .fest-title {
-        font-size: 3.2rem;
-      }
-      .fest-tagline {
-        font-size: 1rem;
-      }
+     .fest-title {
+    font-size: 3.6rem;        /* ⬆ bigger */
+    letter-spacing: 3px;
+  }
+       .hero h2 {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-top: 8px;
+    opacity: 0.95;
+  }
+     .fest-tagline {
+    font-size: 1.05rem;       /* ⬆ readable */
+    margin-bottom: 35px;
+  }
     }
+
 
     @media (max-width: 768px) {
 
-  /* Make hero feel bigger on phone */
   .hero {
-    padding: 0 18px;
-    transform: scale(1.08);   /* ⬅ subtle zoom of whole body */
+    height: auto;                 /* ⬅ don’t force 100vh */
+    min-height: calc(100vh - 130px);
+    padding: 140px 20px 80px;     /* ⬅ space for navbar + breathing room */
+    justify-content: flex-start;  /* ⬅ start from top */
   }
 
-  /* Main fest title */
-  .fest-title {
-    font-size: 3.8rem;        /* ⬅ bigger than before */
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-  }
-
-  /* College name (h2 under title) */
-  .hero h2 {
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-
-  /* Tagline */
-  .fest-tagline {
-    font-size: 1.15rem;
-    margin-bottom: 36px;
-  }
-
-  /* Gateway button */
-  .gateway-btn {
-    font-size: 1.15rem;
-    padding: 18px 48px;       /* ⬅ more tap-friendly */
-    letter-spacing: 2.5px;
-  }
 }
+
+
   </style>
 </head>
 
@@ -343,6 +328,7 @@
 
 </body>
 </html>
+
 
 
 
