@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOICE | TAAL 2026</title>
+
+<style>
+:root{
+  --bg:#02071c;
+  --card:#0b1028;
+  --card-soft:#11183a;
+  --blue:#0cacc5;
+  --wine:#460121;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --border:rgba(255,255,255,0.12);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  background:rgba(2,7,28,0.55);
+  backdrop-filter:blur(14px);
+  z-index:50;
+}
+
+.nav-left img{height:120px;}
+
+.nav-center{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+.nav-center img{height:120px;}
+
+.nav-right a{
+  display:inline-block;
+  padding:12px 34px;
+  margin-right:32px;
+  margin-top:20px;
+  background:#ffffff;
+  color:#040303;
+  font-size:1rem;
+  font-weight:600;
+  text-decoration:none;
+  border-radius:14px;
+  border:1px solid #fff;
+  box-shadow:
+    0 0 12px rgba(0,0,0,.55),
+    0 0 28px rgba(0,0,0,.45);
+  transition:.35s ease;
+}
+
+.nav-right a:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 0 18px rgba(0,212,255,.8),
+    0 0 40px rgba(37,99,255,.7);
+}
+
+/* ================= LAYOUT ================= */
+.wrapper{
+  max-width:1100px;
+  margin:auto;
+  padding:150px 20px 80px;
+}
+
+.separator{
+  height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--wine));
+  margin:24px 0 32px;
+}
+
+/* ================= CONTENT CARD ================= */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.card h1{
+  font-size:2rem;
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.card h2{
+  font-size:1.1rem;
+  margin-top:24px;
+  margin-bottom:10px;
+  color:var(--blue);
+}
+
+.card ul{
+  padding-left:20px;
+}
+
+.card li{
+  font-size:.95rem;
+  line-height:1.8;
+  color:#d1d5db;
+  margin-bottom:6px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="newb.svg" alt="BCM Logo">
+  </div>
+
+  <div class="nav-center">
+    <img src="carnival.png" alt="Carnival Logo">
+  </div>
+
+  <div class="nav-right">
+    <a href="index2.html">HOME</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="wrapper">
+
+  <div class="card">
+    <h1>General Guidelines for Participants</h1>
+
+    <div class="separator"></div>
+
+    <h2>1. Eligibility</h2>
+    <ul>
+      <li>Events are open to School Students and College Students, as specified in the brochure.</li>
+      <li>Participants must carry a valid School/College ID card during registration and participation.</li>
+    </ul>
+
+    <h2>2. Registration</h2>
+    <ul>
+      <li>Individual Events: Registration fee – ₹100 per event.</li>
+      <li>Group Events: Registration fee – ₹200 per group.</li>
+      <li>No registration fee for selected events and for School Students, as mentioned in the brochure.</li>
+      <li>Registration must be completed before the event starts.</li>
+      <li>Late registrations may not be entertained.</li>
+    </ul>
+
+    <h2>3. Event Rules</h2>
+    <ul>
+      <li>Participants must report to the venue at least 30 minutes before the scheduled time.</li>
+      <li>Event-specific rules will be explained by faculty coordinators before the event.</li>
+      <li>The decision of the judging panel and coordinators will be final and binding.</li>
+      <li>Any misconduct, malpractice, or indiscipline will lead to immediate disqualification.</li>
+    </ul>
+
+    <h2>4. Team Events</h2>
+    <ul>
+      <li>Team size must strictly follow the rules announced for each event.</li>
+      <li>Teams must remain the same throughout the event.</li>
+      <li>Substitution of team members after registration is not allowed.</li>
+    </ul>
+
+    <h2>5. Time Management</h2>
+    <ul>
+      <li>Each event will follow a strict time schedule.</li>
+      <li>Participants exceeding the allotted time may face penalties or disqualification.</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

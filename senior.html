@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAAL Senior Events | TAAL 2026</title>
+
+<style>
+:root{
+  --bg:#02040f;
+  --card:#0b1226;
+  --border:rgba(255,255,255,0.12);
+  --primary:#8b5cf6;
+  --accent:#22d3ee;
+  --text:#e5e7eb;
+}
+.filter-buttons {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.filter-btn {
+  padding: 10px 22px;
+  margin: 0 8px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #1e293b;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+/* ✅ blue ONLY when active */
+.filter-btn.active {
+  background: #38bdf8;
+  color: #000;
+}
+/* ❌ no hover blue */
+.filter-btn:hover {
+  background: #1e293b;
+}
+
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top, rgba(139,92,246,0.15), transparent 60%), var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ===== TOP PIGMENTS ===== */
+#pigments{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:280px;
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:70px 50px;
+  background:rgba(5,8,40,0.25);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  z-index:50;
+   background: transparent;       /* 🔥 invisible */
+  backdrop-filter: none;         /* 🔥 remove blur */
+  -webkit-backdrop-filter: none; /* 🔥 remove blur */
+}
+
+.nav-left img{height:100px;}
+.nav-center{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+.nav-center img{height:140px;}
+/* HOME button */
+.nav-right a {
+  display: inline-block;
+
+  padding: 12px 34px;              /* balanced size */
+  margin-right: 32px;              /* pull it away from right edge */
+  margin-top: 20px;
+
+background: linear-gradient(
+    135deg,
+    #ffffff,
+    #ffffff
+  );
+  color: #040303;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+
+  border-radius: 14px;
+  border: 1px solid rgb(255, 255, 255);
+
+  box-shadow:
+    0 0 12px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(0, 0, 0, 0.45);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: all 0.35s ease;
+}
+.nav-right a:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(0, 212, 255, 0.8),
+    0 0 40px rgba(37, 99, 255, 0.7);
+}
+
+/* ===== HEADER ===== */
+.header{
+  padding:140px 20px 50px;
+  text-align:center;
+}
+.header h1{
+  font-size:3.5rem;
+  letter-spacing:5px;
+}
+.header p{
+  margin-top:12px;
+  color:#cbd5e1;
+}
+
+/* ===== POP-UP ANIMATION ===== */
+@keyframes popUp{
+  from{
+    opacity:0;
+    transform:scale(.85) translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* ===== EVENTS GRID ===== */
+.events{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px 100px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+/* ===== EVENT CARD ===== */
+.event-card{
+  background:linear-gradient(135deg,#0b1226,#0f1b3d);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:30px;
+  position:relative;
+  animation:popUp .9s ease forwards;
+  transition:.4s ease;
+}
+
+.event-card:nth-child(2){animation-delay:.1s;}
+.event-card:nth-child(3){animation-delay:.2s;}
+.event-card:nth-child(4){animation-delay:.3s;}
+
+.event-card:hover{
+  background:linear-gradient(135deg,#1b1f4b,#460121);
+  border-color:var(--primary);
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(139,92,246,.45);
+}
+.event-link {
+  text-decoration: none;   /* removes underline */
+  color: inherit;          /* removes blue color */
+  display: block;          /* makes full card clickable */
+}
+
+.event-link:visited,
+.event-link:hover,
+.event-link:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== CARD CONTENT ===== */
+.badge{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:.75rem;
+  background:rgba(255,255,255,.12);
+  margin-bottom:14px;
+}
+
+.event-card h2{
+  font-size:1.4rem;
+  margin-bottom:10px;
+}
+
+.event-card p{
+  font-size:.95rem;
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+.department{
+  margin-top:18px;
+  font-size:.85rem;
+  color:#9ca3af;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:25px;
+  color:#9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="pigments"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="newb.svg" alt="BCM Logo">
+  </div>
+
+  <div class="nav-center">
+    <img src="carnival.png" alt="Carnival Logo">
+  </div>
+
+  <div class="nav-right">
+    <a href="index2.html">HOME</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>TAAL SENIOR EVENTS</h1>
+  <p>Skill • Confidence • Powerful Expression</p>
+</div>
+<div class="filter-buttons">
+  <button type="button" class="filter-btn active"
+          onclick="filterEvents('all', this)">
+    All
+  </button>
+
+  <button type="button" class="filter-btn"
+          onclick="filterEvents('single', this)">
+    Single Events
+  </button>
+
+  <button type="button" class="filter-btn"
+          onclick="filterEvents('group', this)">
+    Group Events
+  </button>
+</div>
+<!-- EVENTS -->
+<div class="events">
+
+  <a href="seniorevents/Cresigns.html" class="event-link" data-type="single">
+  <div class="event-card">
+    <span class="badge">Computer Science</span>
+    <h2>Cresign</h2>
+    <p>UI/UX Designing</p><br><br>
+    <br>
+    <div class="department">Single Event</div>
+  </div>
+</a>
+<a href="seniorevents/codex.html" class="event-link" data-type="single">
+  <div class="event-card">
+    <span class="badge">Computer Science</span>
+    <h2>CodeX</h2>
+    <p>Hackathon
+        </p><br><br><br>
+    <div class="department">Single Event</div>
+  </div></a>
+
+  <a href="seniorevents/TEDChem.html" class="event-link"data-type="single">
+  <div class="event-card">
+    <span class="badge">Chemistry</span>
+    <h2>TEDChem</h2>
+    <p>A talk on the Indian Knowledge System. </p>
+    <br><br><br>
+    <div class="department">Single Event</div>
+  </div>
+</a>
+
+<a href="seniorevents/molecule.html" class="event-link"data-type="single">
+  <div class="event-card">
+    <span class="badge">Chemistry</span>
+    <h2>Mr. /Ms. Molecule</h2>
+    <p>Quiz competition</p>
+    <br>
+    <div class="department">Single Event</div>
+  </div>
+</a>
+
+<a href="seniorevents/casecracker.html" class="event-link"data-type="group">
+  <div class="event-card">
+    <span class="badge">Zoology</span>
+    <h2>Case Crackers</h2>
+    <p>Crime Investigation</p><br>
+    <div class="department">Group Event</div>
+  </div>
+</a>
+<a href="seniorevents/Debatecompetition.html" class="event-link" data-type="group">
+  <div class="event-card">
+    <span class="badge">Sociology</span>
+    <h2> Debate Competition
+</h2><br>
+    <p> Debate Competition
+
+</p>
+    <div class="department">Group Event</div>
+  </div>
+</a>
+
+<a href="seniorevents/Starofcelebrazionesenior .html" class="event-link" data-type="single">
+   <div class="event-card">
+  <span class="badge">English</span>
+    <h2>Star of Celebrazione 
+    </h2><br>
+    <p>Personality Contest</p><br>
+    <div class="department">Single Event</div>
+  </div>
+</a>
+  
+
+<a href="seniorevents/playit.html" class="event-link" data-type="group">
+  <div class="event-card">
+    <span class="badge">English</span>
+    <h2> Play It </h2><br><br>
+    <p>Role-Play Contest</p>
+    <div class="department">Group Event</div>
+  </div>
+</a>
+
+<a href="seniorevents/Ultimatetitan.html" class="event-link" data-type="single">
+  <div class="event-card">
+    <span class="badge">Commerce</span>
+    <h2>Ultimate Titan</h2><br><br>
+    <p>Best Manager</p>
+    <div class="department">Single Event</div>
+  </div>
+  </a>
+
+
+  <a href="seniorevents/Bigbangbattle.html" class="event-link" data-type="group">
+  <div class="event-card">
+    <span class="badge">Commerce</span>
+    <h2>Big Bang Battle</h2><br><br>
+    <p>Best Management Team</p>
+    <div class="department">Group Event</div>
+  </div>
+  </a>
+
+  <a href="seniorevents/Srluciamemorialquizcompetition.html" class="event-link" data-type="group">
+  <div class="event-card">
+    <span class="badge">Statistics</span>
+    <h2>Sr.Lucia Memorial Quiz Competition
+</h2>
+    <p>Quiz Competition</p>
+    <div class="department">Group Cvent</div>
+  </div>
+</a>
+
+
+<a href="seniorevents/tapputhalam.html" class="event-link" data-type="group">
+  <div class="event-card">
+    <span class="badge">Oriental Languages</span>
+    <h2>Tapputhalam
+</h2>
+    <p>Folk Group song competition</p><br><br>
+    <div class="department">Group Event</div>
+  </div>
+</a>
+  
+</div>
+
+<footer>
+  © 2026 TAAL Fest. All Rights Reserved.
+</footer>
+
+<script>
+/* ===== TOP PIGMENTS MOTION ===== */
+const canvas = document.getElementById("pigments");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = 180;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const dots=[];
+for(let i=0;i<60;i++){
+  dots.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    dx:(Math.random()-.5)*.6,
+    dy:(Math.random()-.5)*.3,
+    c:Math.random()>.5?"#8b5cf6":"#22d3ee"
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  dots.forEach(d=>{
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle=d.c;
+    ctx.fill();
+    d.x+=d.dx;
+    d.y+=d.dy;
+    if(d.x<0||d.x>canvas.width) d.dx*=-1;
+    if(d.y<0||d.y>canvas.height) d.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+function filterEvents(type, btn) {
+  const events = document.querySelectorAll('.event-link');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  // 🔹 active state fix
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // 🔹 filtering logic
+  events.forEach(event => {
+    if (type === 'all' || event.dataset.type === type) {
+      event.style.display = "block";
+    } else {
+      event.style.display = "none";
+    }
+  });
+}
+</script>
+
+</body>
+</html>

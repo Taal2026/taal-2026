@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Categories | TAAL 2026</title>
+<canvas id="particles"></canvas>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="newb.svg" alt="BCM Logo" class="bcm-logo">
+  </div>
+
+  <div class="nav-center">
+    <img src="carnival.png" alt="carnival Logo" class="carnival-logo">
+  </div>
+
+  <div class="nav-right">
+    <a href="index2.html" class="home-btn">HOME</a>
+  </div>
+</nav>
+
+<style>
+:root{
+  --bg:#02040f;
+  --glass:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.12);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:#02040f;
+  color:#7FACCF;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:140px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 50px;
+  background:rgba(5,8,40,0.6);
+  backdrop-filter:blur(14px);
+  z-index:10;
+   background: transparent;       /* 🔥 invisible */
+  backdrop-filter: none;         /* 🔥 remove blur */
+  -webkit-backdrop-filter: none; /* 🔥 remove blur */
+}
+
+.bcm-logo{ height:100px; }
+.carnival-logo{ height:130px; }
+
+.home-btn{
+  padding:12px 34px;
+  background:#f2f2f2;
+  color:#000;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* HEADER */
+.header{
+  padding:180px 20px 60px;
+  text-align:center;
+}
+
+.header h1{
+  font-size:4rem;
+  letter-spacing:6px;
+}
+
+.header p{
+  margin-top:14px;
+  color:#cbd5e1;
+}
+
+.divider{
+  width:120px;
+  height:4px;
+  margin:30px auto 0;
+  background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+  border-radius:4px;
+}
+
+/* CARDS */
+.cards{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px 120px;
+  display:grid;
+  gap:30px;
+}
+
+/* Desktop: 3 in one row */
+@media(min-width:900px){
+  .cards{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* Mobile: stack */
+@media(max-width:899px){
+  .cards{
+    grid-template-columns:1fr;
+  }
+}
+
+.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:35px;
+  position:relative;
+  backdrop-filter:blur(18px);
+  transition:0.4s ease;
+  text-decoration:none;
+  color:inherit;
+}
+
+.card:hover{
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 0 40px rgba(139,92,246,0.3);
+}
+
+.icon{
+  width:60px;
+  height:60px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+.arrow{
+  position:absolute;
+  right:25px;
+  top:35px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card:hover .arrow{
+  background:#fff;
+  color:#000;
+}
+
+/* PARTICLES */
+#particles{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header">
+    <h1>EVENT CATEGORIES</h1>
+    <p>Events curated for every age and talent</p>
+    <div class="divider"></div>
+  </div>
+</header>
+
+<section>
+  <div class="cards">
+
+    <a href="general.html" class="card">
+      <div class="arrow">→</div>
+      <div class="icon">🏆</div>
+      <h2>General Events</h2>
+      <p>Fun, creativity and shared festival moments.</p>
+    </a>
+
+    <a href="junior.html" class="card">
+      <div class="arrow">→</div>
+      <div class="icon">👥</div>
+      <h2>TAAL Junior</h2>
+      <p>Spark creativity and joyful rhythm.</p>
+    </a>
+
+    <a href="senior.html" class="card">
+      <div class="arrow">→</div>
+      <div class="icon">⚡</div>
+      <h2>TAAL Senior</h2>
+      <p>Celebrate skill, confidence and expression.</p>
+    </a>
+
+  </div>
+</section>
+
+<script>
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();addEventListener("resize",resize);
+const p=[];
+for(let i=0;i<70;i++){
+  p.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+1,s:Math.random()*0.4+0.2});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  p.forEach(a=>{
+    a.y-=a.s;if(a.y<0)a.y=canvas.height;
+    ctx.beginPath();
+    ctx.arc(a.x,a.y,a.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(34,211,238,0.6)";
+    ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+</script>
+
+</body>
+</html>

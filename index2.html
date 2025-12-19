@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAAL 2026 | Cultural Fest</title>
+<canvas id="particles"></canvas>
+
+<nav class="navbar">
+  <!-- Left: BCM Logo -->
+  <div class="nav-left">
+    <img src="newb.svg" alt="BCM Logo" class="bcm-logo">
+  </div>
+
+  <!-- Center: Carnival Logo -->
+  <div class="nav-center">
+    <img src="carnival.png" alt="Carnival Logo" class="carnival-logo">
+  </div>
+
+  <!-- Right: Register Button -->
+  <div class="nav-right">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSflCp5VzPL58OZNl2Ik6A5tsOYk4ts-Yl-DB3iLRP7rZvB4YQ/viewform?usp=header" class="home-btn">Register</a>
+  </div>
+</nav>
+<style>
+/* ================= COLOR THEME ================= */
+:root {
+    --primary: #0cacc5;
+    --secondary: #315ec1;
+    --accent: #16a9e9;
+    --bg-dark: #02071c;
+}
+
+/* ================= GLOBAL ================= */
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Base carnival night tone */
+    background: #02040f;
+    color: #f1e7e7;
+    overflow-x: hidden;
+}
+
+/* ================= FULL BACKGROUND IMAGE ================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        /* 🎪 Carnival color wash (VISIBLE) */
+        linear-gradient(
+            120deg,
+            rgba(255, 0, 150, 0.35),
+            rgba(0, 212, 255, 0.25),
+            rgba(255, 200, 0, 0.22)
+           
+        ),
+
+        /* Dark cinematic overlay */
+        linear-gradient(
+            rgba(2, 5, 21, 0.75),
+            rgba(4, 4, 28, 0.9)
+        ),
+
+        /* Background image */
+        url("./bgimage.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: -3;
+}
+
+
+/* ================= PARTICLES ================= */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;          /* background layer */
+  pointer-events: none; /* clicks go through */
+}
+
+/* ================= NEON ================= */
+.neon {
+    text-shadow:
+        0 0 5px var(--primary),
+        0 0 15px var(--secondary),
+        0 0 30px var(--accent);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= HEADER ================= */
+header {
+    padding: 70px 20px;
+    text-align: center;
+    animation: fadeUp 1.5s ease;
+}
+
+header h1 {
+    font-size: 4rem;
+    letter-spacing: 5px;
+    text-align:center;
+}
+
+/*nav {
+    
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: var(--primary);
+    transition: 0.4s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}*/
+
+/* ================= SECTIONS ================= */
+section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: auto;
+    animation: fadeUp 1.2s ease;
+}
+
+h2 {
+    color: var(--primary);
+}
+/* for mobile friendliness */
+
+/*new*/
+@media (max-width: 768px){
+
+  .c3 h1{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    line-height: 1.2;
+  }
+
+  .c3 h1 span{
+    display: block;
+    font-size: 2.6rem;
+  }
+}
+@media (max-width: 768px){
+
+  
+
+  .action-box{
+    width: 100%;
+    max-width: 260px;
+    padding: 14px;
+    margin: auto;
+  }
+
+  .action-box h2{
+    font-size: 1.2rem;
+  }
+
+  .action-box p{
+    font-size: 13px;
+  }
+}
+@media (max-width: 768px){
+
+  .scroll-wrapper{
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+
+    margin: 25px auto 0;
+    text-align: center;
+  }
+
+  .scroll-text-vertical{
+    writing-mode: horizontal-tb;
+    font-size: 11px;
+  }
+}
+@media (max-width: 768px){
+
+  .footer{
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right{
+    width: 100%;
+  }
+.oxygen-logo{
+    width: 150px;   /* try 350–450px */
+    height: auto;   /* keeps aspect ratio */
+    margin: auto;
+    display: block;
+}
+  .oxygen-logo{
+    width: 170px;
+    margin: auto;
+  }
+}
+@media (max-width: 768px){
+
+  .c3 h1{
+    font-size: 1.9rem;
+    line-height: 1.2;
+    white-space: nowrap;   /* ⬅ keeps "welcome to" in one line */
+  }
+
+  .c3 h1 span{
+    display: block;        /* ⬅ TAAL 2026 moves below */
+    margin-top: 6px;
+    font-size: 2.6rem;
+  }
+}
+@media (max-width: 768px){
+
+  .countdown{
+    flex-wrap: nowrap;       /* ⬅ prevents line break */
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .countdown > div{
+    width: 65px;
+    height: 65px;
+  }
+
+  #cd-days,
+  #cd-hours,
+  #cd-min,
+  #cd-sec{
+    font-size: 22px;
+  }
+
+  .countdown small{
+    font-size: 10px;
+  }
+}
+@media (max-width: 768px){
+
+  .scroll-wrapper{
+    position: fixed;
+    left: 8px;                /* ⬅ move to LEFT */
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    align-items: center;
+  }
+
+  .scroll-text-vertical{
+    writing-mode: vertical-rl; /* ⬅ vertical text */
+    text-orientation: mixed;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .scroll-trigger{
+    position: static;
+  }
+}
+@media (max-width: 768px){
+
+  .event-text{
+    white-space: nowrap;        /* ⬅ force single line */
+    font-size: 12px;            /* slightly smaller */
+    padding: 8px 14px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;    /* safety for very small phones */
+  }
+}
+@media (max-width: 768px){
+
+  .navbar{
+    height: 80px;           /* reduced height */
+    padding: 0 12px;
+  }
+
+  /* LEFT LOGO */
+  .bcm-logo{
+    height: 45px;
+    width: auto;
+  }
+
+  /* CENTER LOGO */
+  .nav-center {
+  position: absolute;
+  left: 45%;
+  transform: translateX(-50%);
+}
+
+
+  .carnival-logo{
+    height: 55px;           /* smaller but visible */
+  }
+
+  /* RIGHT BUTTON */
+  .home-btn{
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    margin-right: 10px;
+    margin-top: 0;
+  }
+}
+@media (max-width: 768px){
+
+  
+
+  .action-box{
+    width: 140px;            /* compact size */
+    padding: 14px 10px;
+  }
+
+  .action-box h2{
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+
+  .carnival-logo{
+    height: 48px;       /* balanced mobile size */
+    max-width: 130px;
+  }
+}
+@media (max-width: 768px){
+
+  /* NAVBAR LAYOUT FIX */
+  .navbar{
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* left | center | right */
+    align-items: center;
+    height: 80px;
+    padding: 0 12px;
+  }
+
+  /* LEFT LOGO */
+  .nav-left{
+    justify-self: start;
+  }
+
+  .bcm-logo {
+    height: 40px;
+    width: auto;
+  }
+  
+
+  /* CENTER LOGO — FORCE CENTER */
+ 
+
+  .carnival-logo {
+    height: 44px;
+    max-width: 120px;
+  }
+
+
+  /* RIGHT BUTTON */
+  .nav-right {
+    justify-self: end;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
+  .home-btn {
+    margin: 0 !important;
+    margin-left: auto !important;
+    display: inline-block;
+    padding: 5px 12px;     /* ⬅ smaller */
+    font-size: 0.75rem;    /* ⬅ smaller */
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px){
+
+  /* Hide long tagline text in navbar on mobile */
+  nav p,
+  .navbar p,
+  .navbar .tagline,
+  .navbar span {
+    display: none;
+  }
+}
+@media (max-width: 768px){
+
+  /* Footer overall alignment stays clean */
+  .footer{
+    text-align: left;
+  }
+
+  /* Contact section LEFT aligned */
+  .footer-left{
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  .footer-left h2{
+    margin-left: 0;
+  }
+
+  .footer-left p{
+    text-align: left;
+  }
+
+  /* Keep copyright centered */
+  .footer-center{
+    text-align: center;
+  }
+
+  /* Oxygen logo centered */
+  .footer-right{
+    text-align: center;
+  }
+}
+@media (max-width: 768px){
+
+  /* Move Contact block further LEFT */
+  .footer-left{
+    padding-left: 4px;       /* ⬅ closer to screen edge */
+    margin-left: 0;
+    max-width: 240px;
+  }
+
+  /* Make "Contact Us" smaller & NOT bold */
+  .footer-left h2{
+    font-size: 1.05rem;      /* smaller than Explore/Guidelines */
+    font-weight: 400;        /* ⬅ remove bold */
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  /* Contact details smaller & lighter */
+  .footer-left p{
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* Reduce emoji / icon size slightly */
+  .footer-left p span,
+  .footer-left p i,
+  .footer-left p img{
+    font-size: 0.8rem;
+  }
+}
+/* ================= EVENTS ================= */
+.events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.c1{
+     position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 130px;
+  z-index: 10;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: logoEntrance 1.2s ease-out forwards;
+}
+@keyframes logoEntrance{
+  0%{
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card {
+    background: rgba(2, 6, 23, 0.85);
+    border-radius: 14px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: float 4s ease-in-out infinite;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+/* ===== FULLY TRANSPARENT NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px;
+  z-index: 100;
+
+  background: transparent;       /* 🔥 invisible */
+  backdrop-filter: none;         /* 🔥 remove blur */
+  -webkit-backdrop-filter: none; /* 🔥 remove blur */
+}
+
+
+.nav-left,
+.nav-center,
+.nav-right {
+  opacity: 0;
+  animation: navDrop 0.9s ease-out forwards;
+}
+
+/* LEFT */
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.bcm-logo {
+  height: 80px;
+  width: 160px;
+}
+.oxygen-logo {
+  height: 600px;
+  width:600px;
+}
+/* CENTER */
+.nav-center {
+  position: absolute;
+  left: 45%;
+  transform: translateX(-50%);
+}
+
+.carnival-logo {
+  height: 110px;
+  width: auto;
+}
+
+.nav-right {
+  padding-right: 30px;
+}
+
+
+/* RIGHT */
+.nav-right {
+  display: flex;
+  align-items: right;
+}
+/* FIX: keep page scrollable but remove extra vacant space */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;   /* ✅ enable normal scrolling again */
+}
+
+/* Bottom slide page should NOT affect document height */
+.page-bottom {
+  position: fixed;     /* keeps it out of normal flow */
+  inset: 0;
+  transform: translateY(100%);
+  overflow-y: auto;    /* scroll its own content only */
+}
+/* Bottom page stays fixed and animates with scroll */
+.page-bottom {
+  position: fixed;
+  inset: 0;
+  transform: translateY(100%);
+  transition: transform 0.1s linear; /* smooth follow */
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.home-btn {
+  display: inline-block;
+
+  padding: 12px 34px;              /* balanced size */
+  margin-right: 32px;              /* pull it away from right edge */
+  margin-top: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #f2f1f2,
+    #f2f1f2
+  );
+
+  color: #0e0303;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+
+  border-radius: 14px;
+  border: 1px solid rgb(255, 255, 255);
+
+  box-shadow:
+    0 0 12px rgba(0, 212, 255, 0.55),
+    0 0 28px rgba(37, 99, 255, 0.45);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: all 0.35s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(16, 200, 169, 0.8);
+}
+
+
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px var(--secondary);
+}
+
+.card h3 {
+    color: var(--secondary);
+}
+
+/* ================= REGISTER ================= */
+.register {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 100px 20px;
+}
+
+.register a {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 18px 40px;
+    background: var(--bg-dark);
+    color: white;
+    border-radius: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 20px var(--accent);
+    transition: all 0.4s;
+}
+
+.register a:hover {
+    box-shadow: 0 0 45px var(--primary);
+    transform: scale(1.15);
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 30px;
+  flex-wrap: wrap;
+
+  background: rgba(3, 11, 46, 0.35);   /* reduced opacity */
+  color: #9dc1ef;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:50px;
+  flex-wrap:wrap;
+}
+
+/* Each square */
+.countdown > div{
+  width:95px;
+  height:95px;
+  background:rgba(6,12,35,0.95); /* dark blue */
+  border-radius:14px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(0,180,255,0.45);
+
+  box-shadow:
+    0 0 14px rgba(0,180,255,0.45),
+    inset 0 0 12px rgba(0,180,255,0.25);
+
+  backdrop-filter: blur(6px);
+  transition:0.3s ease;
+}
+.hero-text {
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(45deg, rgb(9, 172, 115), #0064ff, rgb(230, 9, 141), rgb(8, 218, 208)) 0 0 / 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: 3s infinite gradient-shift;
+}
+
+.countdown > div {
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+.countdown > div:nth-child(1) {
+  box-shadow: 0 0 18px rgba(160,90,255,0.8);
+}
+
+.countdown > div:nth-child(1) > div {
+  color: #b48cff;
+  text-shadow: 0 0 8px rgba(86, 21, 177, 0.9);
+}
+.countdown > div:nth-child(2) {
+  box-shadow: 0 0 18px rgba(255,255,255,0.7);
+}
+
+.countdown > div:nth-child(2) > div {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.9);
+}
+.countdown > div:nth-child(3) {
+  box-shadow: 0 0 18px rgba(0,255,150,0.7);
+}
+
+.countdown > div:nth-child(3) > div {
+  color: #4dffb2;
+  text-shadow: 0 0 8px rgba(0,255,150,0.9);
+}
+.countdown > div:nth-child(4) {
+  box-shadow: 0 0 18px rgba(0,200,255,0.9);
+}
+
+.countdown > div:nth-child(4) > div {
+  color: #6fe7ff;
+  text-shadow: 0 0 8px rgba(0,200,255,0.9);
+}
+.countdown > div:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+.page-bottom {
+  position: fixed;
+  inset: 0;
+  transform: translateY(100%);
+  transition: transform 1.600s cubic-bezier(.4,0,.2,1); /* smooth slide */
+  overflow-y: auto;
+  will-change: transform;
+}
+
+/* ================= CURSOR GLOW ================= */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    filter: blur(6px);
+    z-index: 999;
+}
+.c2 {
+    float:right;
+    width:220px;
+    max-width:40%;
+    height:auto;
+    margin:0 0 15px 20px;
+}
+
+.gradient-text {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+
+  /* Gradient */
+  background: linear-gradient(
+    270deg,
+    #00c6ff,
+    #0072ff,
+    #7f00ff,
+    #e100ff
+  );
+  background-size: 400% 400%;
+
+  /* Apply gradient to text */
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Animation */
+  animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 38.6452% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.event-text {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: -20px; /* ⬅ strong pull upward */
+}
+.c3 {
+    text-align:center;
+}
+
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: rgb(74, 58, 213);
+    border-radius: 50%;
+
+  }
+#cd-days{font-size:40px;
+font-weight:500;
+line-height:1;
+}
+#cd-hours{font-size:40px;
+font-weight:500;
+line-height:1;
+}
+#cd-min{font-size:40px;
+font-weight:500;
+line-height:1;
+}
+#cd-sec{font-size:40px;
+font-weight:500;
+line-height:1;
+}
+
+
+.action-box {
+  width: 320px;
+  height: 80px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 183, 255, 0.4);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-box h3 {
+  margin-bottom: 8px;
+  color: #00b7ff;
+}
+
+.action-box p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+/* Mobile touch optimizations */
+body {
+  overscroll-behavior: none; /* prevents rubber-band effect */
+  touch-action: pan-y;       /* allow vertical gestures only */
+}
+/* ================= MOBILE FIT-TO-SCREEN ================= */
+@media (max-width: 768px) {
+
+  /* Navbar height smaller */
+  .navbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* left | center | right */
+    align-items: center;
+    height: 72px;
+    padding: 0 10px;
+  }
+  .nav-left {
+    justify-self: start;
+  }
+
+
+
+  .bcm-logo {
+    height: 55px;
+    width: auto;
+  }
+
+  .carnival-logo {
+    height: 70px;
+  }
+
+  /* Header spacing reduced */
+  header {
+    padding: 100px 14px 30px;
+  }
+
+  /* Main title */
+  header h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+
+  /* Subtitle */
+  header p {
+    font-size: 0.95rem;
+    margin-top: 6px;
+  }
+
+  /* Countdown container */
+  .countdown {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  /* Countdown blocks smaller */
+  .countdown > div {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Countdown numbers */
+  #cd-days,
+  #cd-hours,
+  #cd-min,
+  #cd-sec {
+    font-size: 26px;
+  }
+
+  /* Event date pill */
+  .event-text {
+    font-size: 13px;
+    padding: 8px 14px;
+    margin-top: -10px;
+  }
+
+  /* Action buttons stack + compact */
+  
+
+  .action-box {
+    width: 90%;
+    height: auto;
+    padding: 14px;
+  }
+
+  .action-box h2 {
+    font-size: 1.1rem;
+  }
+
+  .action-box p {
+    font-size: 0.85rem;
+  }
+
+}
+
+
+/* Smoother hardware-accelerated animation */
+.page-bottom {
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+}
+
+.action-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(0, 183, 255, 0.6);
+}
+.image-row {
+    display: flex;
+    justify-content: space-between; /* pushes images to edges */
+    align-items: center;            /* aligns vertically */
+}
+
+.image-row img {
+    width: 250px; 
+    height: 200px;  /* same height/size */
+}
+/* LEFT LOGO (like BCM in image) */
+.logo-left {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 180px;
+  height: auto;
+  z-index: 10;
+
+  opacity: 0;
+  transform: translateY(-15px);
+  animation: logoIn 1.2s ease-out forwards;
+}
+/* Bottom page (hidden initially) */
+.page-bottom{
+  background:rgba(2,6,23,0.75);
+  backdrop-filter:blur(22px);
+  transform:translateY(100%);
+  z-index:2;
+  padding:140px 40px;
+}
+/* CENTER LOGO (Carnival image) */
+.logo-center {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: auto;
+  z-index: 9;
+
+  opacity: 0;
+  transform: translate(-50%, -15px);
+  animation: logoIn 1.4s ease-out forwards;
+}
+.about1{
+  text-align: justify;
+}
+
+
+/* LEFT */
+.footer-left {
+  max-width: 400px;
+}
+
+/* CENTER */
+.footer-center {
+  text-align: center;
+  flex: 1;
+  font-size: 14px;
+}
+
+/* RIGHT */
+.footer-right {
+  width: 300px;
+  height: auto;
+}
+.right {
+  text-align: right;
+    width: 300px;
+  height: auto;
+}
+.left {
+  text-align: left;
+   width: 300px;
+  height: auto;
+}
+.center {
+  text-align: center;
+    width: 300px;
+  height: auto;
+}
+/* Make footer responsive */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    align-self: center;
+  }
+}
+
+
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.action-box {
+  animation: slideUp 0.9s ease-out forwards;
+  opacity: 0; /* important for animation start */
+}
+
+
+/* Entrance animation */
+@keyframes logoIn {
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Fix transform conflict for left logo */
+.logo-left {
+  animation-name: logoInLeft;
+}
+
+@keyframes logoInLeft {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container */
+.action-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;     /* was 20px */
+  margin-bottom: 40px; 
+  flex-wrap: nowrap;
+}
+
+/* Anchor */
+.action-boxes a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Boxes */
+.action-box {
+ width: 190px;   /* ⬅ reduced */
+  height: 65px;       /* ⬅ reduced height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Text */
+.action-box h2 {
+  font-size: 1.2rem;   /* ⬅ smaller text */
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Hover effect */
+.action-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+@media (max-width: 600px) {
+  .action-box {
+    width: 145px;   /* ⬅ narrower on mobile */
+    height: 55px;
+  }
+
+  .action-boxes {
+    margin-bottom: 50px; /* extra safety on mobile */
+  }
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+  .action-box {
+    width: 160px;
+    height: 60px;
+  }
+
+  .action-box h2 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+
+  /* ABOUT SECTION CONTAINER */
+  section#about {
+    padding: 50px 18px;
+  }
+
+  /* ABOUT TITLE */
+  section#about h2 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ABOUT TEXT CLEANUP */
+  .about1 {
+    font-size: 0.95rem;        /* ⬅ smaller, cleaner */
+    line-height: 1.8;          /* ⬅ airy reading */
+    text-align: left;          /* ⬅ no forced justify */
+    word-spacing: normal;
+    letter-spacing: 0.2px;
+    max-width: 100%;
+    margin: 0 auto;
+    opacity: 0.95;
+  }
+
+  /* Optional: subtle paragraph separation feel */
+  .about1::first-letter {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+@media (max-width: 768px) {
+
+  section#about h2 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .about1 {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: left;
+    letter-spacing: 0.2px;
+    opacity: 0.95;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+
+
+</style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<body>
+</div>
+
+    
+  </div>
+<div class="cursor"></div>
+<!--<img src="newb.svg" class="logo-left" alt="College Logo">
+<img src="Carnival.png" class="logo-center" alt="Carnival Logo">-->
+<header>
+    <!--<h2 class="font-orbitron text-4xl sm:text-5xl font-black text-white mb-4">About <span class="hero-text">Sahya '26</span></h2>-->
+
+    
+  <div class="c3"><h1 class="font-orbitron text-4xl sm:text-5xl font-black text-white mb-4">Welcome to<span class="hero-text">TAAL 2026</span></h1></div>
+
+<img src="oxygen.png" alt="oxygen logo" class="oxygen-logo footer-right">
+    <p>The Rhythm of Culture • Music • Dance • Celebration</p>
+
+<div class="countdown" id="countdown">
+      <div class="count-block"><div id="cd-days">00</div><small>Days</small></div>
+      <div class="count-block"><div id="cd-hours">00</div><small>Hours</small></div>
+      <div class="count-block"><div id="cd-min">00</div><small>Min</small></div>
+      <div class="count-block"><div id="cd-sec">00</div><small>Sec</small></div>
+    </div>
+    <div><br><br></div>
+    <div style="text-align:center;">
+ <div class="event-text">
+    <span class="dot"></span>
+    Event Begins : January 9,10 2026 | 10.30 AM
+  </div>
+     <div>
+</header>
+<div class="action-boxes"><a href="events.html" >
+  <div class="action-box explore">
+    <h2>EXPLORE</h2>
+  </div></a>
+
+  <div class="action-box guidelines"><a href="guidelines.html" >
+    <h2>GUIDELINES</h2>
+  </div></a>
+</div>
+<!--<nav>
+    <a href="#about">About</a>
+    <a href="#events">Events</a>
+    <a href="#register">Register</a>
+    <a href="#contact">Contact</a>
+</nav>-->
+<!-- ===== BOTTOM PAGE ===== -->
+<div class="page page-bottom" id="bottomPage">
+  
+
+<section id="about">
+    <h2>About TAAL 2026</h2>
+<p class="about1">
+  TAAL 2K26 – BCM Carnival, the flagship college fest of Bishop Chulaparambil Memorial College, Kottayam,
+  is a vibrant platform where a wide spectrum of talents, skills and knowledge converge and are celebrated.
+
+  The name “TAAL” evokes the rhythmic essence of musical rendition, and the fest seeks to recreate that same
+  spirit of harmony and celebration in the realms of academic pursuit and creative talent.
+
+
+
+  The fest features a diverse array of events, including competitions, exhibitions and games, designed for both
+  school and college students.
+
+
+
+  Organized and managed primarily by our students, TAAL 2K26 plays a vital role in equipping them with confidence
+  and competence to meet the challenges of today’s highly competitive world.
+</p>
+</section>
+
+<section id="about">
+  <h2>About BCM College</h2>
+
+  <p class="about1">
+    Bishop Chulaparambil Memorial College (BCM College), one of the first colleges for women in Kerala,
+    situated at the heart of Kottayam, was founded in 1955 with the objective of empowering women through education.
+ 
+
+  
+    Over the decades, the college has grown into a premier institution known for its academic excellence
+    and holistic development, offering undergraduate and postgraduate programmes across arts, science,
+    and commerce streams.
+ 
+
+  
+    The institution emphasizes value-based education, discipline, and social responsibility, nurturing
+    confident and socially committed graduates through a vibrant campus culture.
+ 
+
+
+    With a dedicated faculty and strong academic traditions, BCM College continues to inspire generations
+    of learners and contribute meaningfully to society.
+  </p>
+</section>
+
+</section>
+
+
+<img src="dj.png"  class="left">
+
+<img src="concert.png" alt="oxygen logo" class="center">
+
+<img src="exb.png" alt="oxygen logo" class="right">
+
+<footer class="footer">
+  <section id="contact" class="footer-left">
+    <h2>Contact Us</h2>
+    <p>
+      📧 taal<br>
+      📞 Dr. Naveena J Narithookkil (General Convener)
+
+📞Dr. Annu Thomas (General Coordinator)
+9496833830
+annuthomas@bcmcollege.ac.in
+
+
+
+📞Deltta Kurian  
+deltta@bcmcollege.ac.in
+7560940955
+
+Dr. Elizabeth Johny 
+
+Nisha Mary Peter
+nisha@bcmcollege.ac.in
+8050581426 <br>
+      📸 Instagram: taal_2k26
+    </p>
+  </section>
+
+  <div class="footer-center">
+    © 2026 TAAL Fest. All Rights Reserved.
+  </div>
+
+  
+</footer>
+</div>
+
+<script>
+    /* COUNTDOWN */
+let target = new Date('January 9, 2026 10:30:00').getTime();
+function updateCountdown(){
+  const diff = target - Date.now();
+  if(diff <= 0){
+    document.getElementById('countdown').innerHTML='Event Live';
+    return;
+  }
+  document.getElementById('cd-days').innerText=Math.floor(diff/86400000);
+  document.getElementById('cd-hours').innerText=Math.floor((diff%86400000)/3600000);
+  document.getElementById('cd-min').innerText=Math.floor((diff%3600000)/60000);
+  document.getElementById('cd-sec').innerText=Math.floor((diff%60000)/1000);
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+/* ================= CURSOR GLOW ================= */
+const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+/* ================= PARTICLES ================= */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+let particles = [];
+for (let i = 0; i < 120; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: Math.random() * 0.6,
+        dy: Math.random() * 0.6
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = '#22d3ee';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x > canvas.width || p.x < 0) p.dx *= -1;
+        if (p.y > canvas.height || p.y < 0) p.dy *= -1;
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+<script>
+const centerPage = document.getElementById("centerPage");
+const bottomPage = document.getElementById("bottomPage");
+const openBtn = document.getElementById("openBtn");
+const closeBtn = document.getElementById("closeBtn");
+
+let startY = 0;
+let isOpen = false;
+
+/* Touch */
+document.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+document.addEventListener("touchend", e => {
+  const endY = e.changedTouches[0].clientY;
+  handleSwipe(startY - endY);
+});
+
+/* Trackpad / Mouse */
+document.addEventListener("wheel", e => {
+  handleSwipe(e.deltaY);
+},{passive:true});
+
+/* Buttons */
+openBtn.onclick = openPage;
+closeBtn.onclick = closePage;
+
+function handleSwipe(delta){
+  if(delta > 80 && !isOpen) openPage();
+  if(delta < -80 && isOpen) closePage();
+}
+
+function openPage(){
+  bottomPage.style.transform = "translateY(0)";
+  isOpen = true;
+}
+
+function closePage(){
+  bottomPage.style.transform = "translateY(100%)";
+  isOpen = false;
+}
+</script>
+
+<script>
+const bottomPage = document.getElementById("bottomPage");
+
+let isOpen = false;
+let startY = 0;
+
+/* TOUCH (mobile) */
+document.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+document.addEventListener("touchend", e => {
+  const endY = e.changedTouches[0].clientY;
+  handleGesture(startY - endY);
+});
+
+/* MOUSE / TRACKPAD */
+document.addEventListener("wheel", e => {
+  handleGesture(e.deltaY);
+}, { passive: true });
+
+function handleGesture(delta) {
+  if (delta > 80 && !isOpen) {
+    bottomPage.style.transform = "translateY(0)";
+    isOpen = true;
+  } 
+  else if (delta < -80 && isOpen) {
+    bottomPage.style.transform = "translateY(100%)";
+    isOpen = false;
+  }
+}
+</script>
+<script>
+const bottomPage = document.getElementById("bottomPage");
+
+let isOpen = false;
+let startY = 0;
+
+/* TOUCH START */
+document.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+}, { passive: true });
+
+/* TOUCH END */
+document.addEventListener("touchend", e => {
+  const endY = e.changedTouches[0].clientY;
+  const delta = startY - endY;
+
+  /* only trigger if user is at top */
+  if (!isOpen && delta > 80 && window.scrollY === 0) {
+    openPage();
+  }
+  else if (isOpen && delta < -80 && bottomPage.scrollTop === 0) {
+    closePage();
+  }
+}, { passive: true });
+
+/* MOUSE / TRACKPAD */
+document.addEventListener("wheel", e => {
+  if (!isOpen && e.deltaY > 80 && window.scrollY === 0) {
+    openPage();
+  }
+  else if (isOpen && e.deltaY < -80 && bottomPage.scrollTop === 0) {
+    closePage();
+  }
+}, { passive: true });
+
+function openPage() {
+  bottomPage.style.transform = "translateY(0)";
+  isOpen = true;
+}
+
+function closePage() {
+  bottomPage.style.transform = "translateY(100%)";
+  isOpen = false;
+}
+</script>
+
+</body>
+</html>
