@@ -361,6 +361,14 @@ h2 {
     margin-top: 0;
   }
 }
+
+  @media (min-width: 769px) {
+  .home-btn {
+    margin-right: 32px;
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 768px){
 
   
@@ -1276,6 +1284,54 @@ body {
     margin: 0 auto;
   }
 }
+@media (max-width: 768px) {
+
+  /* NAVBAR STRUCTURE */
+  .navbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* BCM | Carnival | Register */
+    align-items: center;
+    height: 70px;
+    padding: 0 10px;
+  }
+
+  /* LEFT LOGO */
+  .nav-left {
+    justify-self: start;
+  }
+
+  .bcm-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  /* CENTER LOGO */
+  .nav-center {
+    position: static !important;
+    transform: none !important;
+    justify-self: center;
+  }
+
+  .carnival-logo {
+    height: 42px;
+    max-width: 120px;
+  }
+
+  /* RIGHT BUTTON */
+  .nav-right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+  }
+
+  .home-btn {
+    padding: 5px 10px;      /* ⬅ smaller */
+    font-size: 0.72rem;     /* ⬅ smaller text */
+    border-radius: 10px;
+    margin: 0 !important;   /* ⬅ kills desktop margin */
+    white-space: nowrap;
+  }
+}
 
 
 
@@ -1607,4 +1663,5 @@ function closePage() {
 </script>
 
 </body>
+
 </html>
