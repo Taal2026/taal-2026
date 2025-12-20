@@ -1378,6 +1378,14 @@ body {
   }
 }
 
+/* ===== FULL WIDTH FOOTER FIX ===== */
+footer.footer {
+  width: 100vw;           /* full viewport width */
+  max-width: 100%;        /* cancel section max-width */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  border-radius: 0;       /* remove rounded edges */
+}
 
 
 
@@ -1717,6 +1725,7 @@ function closePage() {
 </body>
 
 </html>
+
 
 
 
